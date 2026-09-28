@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+//        System.out.println("Hello world!");
 
         // Variables
         String itemCode = "A001";
@@ -22,20 +22,22 @@ public class Main {
         boolean needsReorder = stockNow < reorderLevel;
 
         // Logical operators
-        boolean canSell = isActive && stockNow > 0;
+        boolean canSell = isActive && stock > order;
+        boolean canSellAgain = isActive && stockNow > order;
         boolean alert = needsReorder || stock == 0;
 
         // Output
         System.out.println("Item: " + itemCode + " - " + itemName);
         System.out.println("Unit Price: " + unitPrice);
         System.out.println("Amount: ₱ " + priceWithTax);
-        System.out.println("Stock: " + stock + "pcs");
+        System.out.println("Stock: " + stock + " pcs");
         System.out.println("==============================");
-        System.out.println("order: " + order + "pcs");
+        System.out.println("order: " + order + " pcs");
         System.out.println("Total Amount: ₱ " + totalAmount);
+        System.out.println("Can sell? " + canSell);
         System.out.println("==============================");
         System.out.println("Stock now: " + stockNow);
-        System.out.println("Can sell? " + canSell);
+        System.out.println("Can sell again? " + canSellAgain);
         System.out.println("Needs reorder? " + needsReorder);
         System.out.println("Alert:" + alert);
     }

@@ -1,44 +1,81 @@
 public class Main {
+    //switch method
+    static String getCategoryName(int code) {
+        switch (code) {
+            case 1:
+                return "Accessories";
+            case 2:
+                return "Hardware";
+            case 3:
+                return "Software";
+            default:
+                return "Unknown";
+        }
+    }
+    static double calculateTotal(double unitPrice, double taxRate, int qty) {
+        return unitPrice * (1 + taxRate) * qty;
+    }
+    //if-else method
+    static String getStockStatus(int stock, int reorderLevel) {
+        if (stock == 0) {
+            return "OUT OF STOCK";
+        } else if (stock <= reorderLevel) {
+            return "LOW STOCK";
+        } else {
+            return "GOOD";
+        }
+    }
+    static int calculateReorderQty(int stock, int reorderLevel, int targetStock) {
+        if (stock > reorderLevel) {
+            return 0;
+        }
+        return targetStock - stock;
+    }
     public static void main(String[] args) {
-//        System.out.println("Hello world!");
-
         // Variables
         String itemCode = "A001";
         String itemName = "Wireless Mouse";
         double unitPrice = 100;
-        double tax = .20;
+        double taxRate = .20;
         int stock = 100;
         int reorderLevel = 15;
-        boolean isActive = true;
-        int order = 9;
+        int targetStock = 100;
+        int categoryCode = 1;               //choices(1,2,3)
+
+        System.out.println("Item: " + itemCode + " - " + itemName + " (" + getCategoryName(categoryCode) + ")");
+        System.out.println("Unit Price: " + unitPrice);
 
         // Arithmetic operators
-        double addedTax = unitPrice * tax;
+        double addedTax = unitPrice * taxRate;
         double priceWithTax = unitPrice + addedTax;
-        double totalAmount = priceWithTax * order;
-        int stockNow = stock - order;
 
-        // Relational operators
-        boolean needsReorder = stockNow < reorderLevel;
-
-        // Logical operators
-        boolean canSell = isActive && stock > order;
-        boolean canSellAgain = isActive && stockNow > order;
-        boolean alert = needsReorder || stock == 0;
-
-        // Output
-        System.out.println("Item: " + itemCode + " - " + itemName);
-        System.out.println("Unit Price: " + unitPrice);
         System.out.println("Amount: ₱ " + priceWithTax);
         System.out.println("Stock: " + stock + " pcs");
         System.out.println("==============================");
-        System.out.println("order: " + order + " pcs");
-        System.out.println("Total Amount: ₱ " + totalAmount);
-        System.out.println("Can sell? " + canSell);
+
+        //loop method
+        for (int day = 1; day <= 5; day++) {
+            int order = 30;
+
+            if (order > stock) {
+                System.out.println("Day " + day + ": Not enough stock for order of " + order);
+                break;
+            }
+
+            stock -= order;
+            double total = calculateTotal(unitPrice, taxRate, order);
+
+            System.out.println("Day " + day + ": sold " + order
+                    + " | total ₱" + total
+                    + " | stock " + stock
+                    + " | " + getStockStatus(stock, reorderLevel));
+
+            int reorderQty = calculateReorderQty(stock, reorderLevel, targetStock);
+            if (reorderQty > 0) {
+                System.out.println("   -> ALERT!: Reorder " + reorderQty + " pcs");
+            }
+        }
         System.out.println("==============================");
-        System.out.println("Stock now: " + stockNow);
-        System.out.println("Can sell again? " + canSellAgain);
-        System.out.println("Needs reorder? " + needsReorder);
-        System.out.println("Alert:" + alert);
+        System.out.println("Stock left: " + stock);
     }
 }

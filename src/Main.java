@@ -36,5 +36,27 @@ public class Main {
         }
         System.out.println("==============================");
         System.out.println("Stock left: " + mouse.getStock());
+        System.out.println("==============================");
+
+        // New: PurchaseOrder at IApprovable
+        Order po1 = new PurchaseOrder("PO-001", "2026-09-30", mouse, 50);
+        po1.printSummary();
+
+        if (po1 instanceof IApprovable approvable) {
+            System.out.println("Status: " + approvable.getApprovalStatus());
+            approvable.approve("Manager Cruz");
+            System.out.println("Status: " + approvable.getApprovalStatus());
+        }
+
+        System.out.println("==============================");
+
+        Order[] orders = {
+                new PurchaseOrder("PO-002", "2026-10-01", mouse, 20),
+                new PurchaseOrder("PO-003", "2026-10-02", mouse, 5)
+        };
+
+        for (Order order : orders) {
+            order.printSummary();
+        }
     }
 }

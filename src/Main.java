@@ -7,9 +7,8 @@ public class Main {
 
         System.out.println("Item: " + mouse.getItemCode() + " - " + mouse.getItemName() + " (" + mouse.getCategoryName() + ")");
         System.out.println("Supplier: " + mouse.getSupplier().getSupplierName() + " | " + mouse.getSupplier().getContactNumber() + " | " + mouse.getSupplier().getEmail());
-        System.out.println("Unit Price: " + mouse.getUnitPrice());
+        System.out.println("Unit Price: " + mouse.getUnitPrice() + " | " + "Stock: " + mouse.getStock() + " pcs");
         System.out.println("Amount: ₱ " + mouse.priceWithTax());
-        System.out.println("Stock: " + mouse.getStock() + " pcs");
         System.out.println("==============================");
 
         //loop method
@@ -35,7 +34,7 @@ public class Main {
             }
         }
         System.out.println("==============================");
-        System.out.println("Stock left: " + mouse.getStock());
+        System.out.println("Stock left: " + mouse.getStock() + " : " + mouse.getStockStatus());
         System.out.println("==============================");
 
         // New: PurchaseOrder at IApprovable
@@ -55,6 +54,7 @@ public class Main {
                 new PurchaseOrder("PO-003", "2026-10-02", mouse, 5)
         };
 
+        System.out.println("Orders");
         for (Order order : orders) {
             order.printSummary();
         }

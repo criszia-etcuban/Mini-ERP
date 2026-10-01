@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week1-Day3 OOP - classes &amp; objects&#10;Add Item and Supplier classes with encapsulation">
-      <change afterPath="$PROJECT_DIR$/src/IApprovable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PurchaseOrder.java" afterDir="false" />
+    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week1-Day4 OOP-inheritance &amp; interfaces&#10;Add Order abstract class, PurchaseOrder subclass, and IApprovable interface">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -83,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1790676619360</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="week1-Day4 OOP-inheritance &amp; interfaces&#10;Add Order abstract class, PurchaseOrder subclass, and IApprovable interface">
+      <created>1790759922305</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1790759922305</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,17 +107,7 @@
     <MESSAGE value="week1-Day1 Java Syntax basics&#10;modified code" />
     <MESSAGE value="week1-Day2 Control flow &amp; methods&#10;Add if/else, switch, loops and reorder methods&#10;Output:&#10;Item: A001 - Wireless Mouse (Accessories)&#10;Unit Price: 100.0&#10;Amount: ₱ 120.0&#10;Stock: 100 pcs&#10;==============================&#10;Day 1: sold 30 | total ₱3600.0 | stock 70 | GOOD&#10;Day 2: sold 30 | total ₱3600.0 | stock 40 | GOOD&#10;Day 3: sold 30 | total ₱3600.0 | stock 10 | LOW STOCK&#10;   -&gt; ALERT!: Reorder 90 pcs&#10;Day 4: Not enough stock for order of 30&#10;==============================&#10;Stock left: 10&#10;&#10;Process finished with exit code 0" />
     <MESSAGE value="week1-Day3 OOP - classes &amp; objects&#10;Add Item and Supplier classes with encapsulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="week1-Day3 OOP - classes &amp; objects&#10;Add Item and Supplier classes with encapsulation" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="week1-Day4 OOP-inheritance &amp; interfaces&#10;Add Order abstract class, PurchaseOrder subclass, and IApprovable interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="week1-Day4 OOP-inheritance &amp; interfaces&#10;Add Order abstract class, PurchaseOrder subclass, and IApprovable interface" />
   </component>
 </project>

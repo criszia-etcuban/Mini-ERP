@@ -85,10 +85,18 @@ public class Item {
         return targetStock - stock;
     }
 
-    public void sell(int qty) {
+//    public void sell(int qty) {
+//        if (qty > stock) {
+//            System.out.println("Not enough stock for order of " + qty);
+//            return;
+//        }
+//        stock -= qty;
+//    }
+    public void sell(int qty) throws InsufficientStockException {
         if (qty > stock) {
-            System.out.println("Not enough stock for order of " + qty);
-            return;
+            throw new InsufficientStockException(
+                    "Not enough stock for " + itemName + " requested: " + qty + ", available: " + stock
+            );
         }
         stock -= qty;
     }

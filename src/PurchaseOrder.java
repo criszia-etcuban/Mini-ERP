@@ -6,6 +6,9 @@ public class PurchaseOrder extends Order implements IApprovable {
 
     public PurchaseOrder(String orderId, String orderDate, Item item, int qty) {
         super(orderId, orderDate);   // call the constructor of Order
+        if (qty <= 0) {
+            throw new InvalidPurchaseOrderException("Quantity must be greater than 0. Got: " + qty);
+        }
         this.item = item;
         this.qty = qty;
         this.approved = false;

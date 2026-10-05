@@ -9,6 +9,14 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class Main {
+
+    public static Item findItemBySku(HashMap<String, Item> itemMap, String sku) throws ItemNotFoundException {
+        Item item = itemMap.get(sku);
+        if (item == null) {
+            throw new ItemNotFoundException("No item found with SKU: " + sku);
+        }
+        return item;
+    }
     public static void main(String[] args) {
         // ArrayList of Suppliers
         ArrayList<Supplier> suppliers = new ArrayList<>();
@@ -83,29 +91,34 @@ public class Main {
         System.out.println("Amount: ₱ " + item.priceWithTax());
         System.out.println("==============================");
 
-        //loop method
-        for (int day = 1; day <= 5; day++) {
-            int order = 30;
+        try {
+            //loop method
+            for (int day = 1; day <= 5; day++) {
+                int order = 30;
 
-            if (order > item.getStock()) {
-                System.out.println("Day " + day + ": Not enough stock for order of " + order);
-                break;
+//                if (order > item.getStock()) {
+//                    System.out.println("Day " + day + ": Not enough stock for order of " + order);
+//                    break;
+//                }
+
+                double total = item.calculateTotal(order);
+                item.sell(order);
+
+                System.out.println("Day " + day + ": sold " + order
+                        + " | total ₱" + total
+                        + " | stock " + item.getStock()
+                        + " | " + item.getStockStatus());
+
+                int reorderQty = item.calculateReorderQty();
+                if (reorderQty > 0) {
+                    System.out.println("   -> ALERT!: Reorder " + reorderQty + " pcs from " + item.getSupplier().getSupplierName());
+                }
             }
-
-            double total = item.calculateTotal(order);
-            item.sell(order);
-
-            System.out.println("Day " + day + ": sold " + order
-                    + " | total ₱" + total
-                    + " | stock " + item.getStock()
-                    + " | " + item.getStockStatus());
-
-            int reorderQty = item.calculateReorderQty();
-            if (reorderQty > 0) {
-                System.out.println("   -> ALERT!: Reorder " + reorderQty + " pcs from " + item.getSupplier().getSupplierName());
-            }
+        } catch (InsufficientStockException e) {
+            System.out.println("STOPPED: " + e.getMessage());
         }
         System.out.println("==============================");
+
         System.out.println("Stock left: " + item.getStock() + " : " + item.getStockStatus());
         System.out.println("==============================");
         System.out.println("=== INVENTORY ===");
@@ -130,10 +143,18 @@ public class Main {
 
         // LinkedList of PurchaseOrders, same List interface, magkaiba lang sa loob
         LinkedList<PurchaseOrder> purchaseOrders = new LinkedList<>();
-        purchaseOrders.add(new PurchaseOrder("PO-001", "2026-10-01", items.get(0), 20));
-        purchaseOrders.add(new PurchaseOrder("PO-002", "2026-10-02", items.get(2), 5));
-
         System.out.println("=== PURCHASE ORDERS ===");
+        try {
+            purchaseOrders.add(new PurchaseOrder("PO-001", "2026-10-01", itemMap.get("A001"), 20));
+            purchaseOrders.add(new PurchaseOrder("PO-002", "2026-10-02", itemMap.get("A003"), - 5));
+            //sample data for not found
+            Item item3 = findItemBySku(itemMap, "A999");
+            purchaseOrders.add(new PurchaseOrder("PO-003", "2026-10-03", item3, 10));
+        } catch (ItemNotFoundException e) {
+            System.out.println("Error creating PO: " + e.getMessage());
+        } catch (InvalidPurchaseOrderException e ) {
+            System.out.println("ERROR! (Invalid PO): " + e.getMessage());
+        }
         for (PurchaseOrder po : purchaseOrders) {
             po.printSummary();
             System.out.println("   Status: " + po.getApprovalStatus());

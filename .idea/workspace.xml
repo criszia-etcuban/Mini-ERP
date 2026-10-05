@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week2-Day1  Collection I &#10;Add ArrayList/LinkedList to store Items, Suppliers, and PurchaseOrders">
+    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week2-Day1  Collection I &#10;modified sample data into get data from arrayList">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -101,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1790843010048</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="week2-Day1  Collection I &#10;modified sample data into get data from arrayList">
+      <created>1791169055199</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1791169055199</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,6 +131,7 @@
     <MESSAGE value="week1-Day4 OOP-inheritance &amp; interfaces&#10;Add Order abstract class, PurchaseOrder subclass, and IApprovable interface" />
     <MESSAGE value="week1-Day5  console-based 'Mini Procurement &amp; Inventory' app demonstrating OOP (Item, Supplier, PurchaseOrder)" />
     <MESSAGE value="week2-Day1  Collection I &#10;Add ArrayList/LinkedList to store Items, Suppliers, and PurchaseOrders" />
-    <option name="LAST_COMMIT_MESSAGE" value="week2-Day1  Collection I &#10;Add ArrayList/LinkedList to store Items, Suppliers, and PurchaseOrders" />
+    <MESSAGE value="week2-Day1  Collection I &#10;modified sample data into get data from arrayList" />
+    <option name="LAST_COMMIT_MESSAGE" value="week2-Day1  Collection I &#10;modified sample data into get data from arrayList" />
   </component>
 </project>

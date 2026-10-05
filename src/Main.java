@@ -1,3 +1,5 @@
+import com.sun.source.tree.Tree;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.HashMap;
@@ -18,6 +20,60 @@ public class Main {
         items.add(new Item("A001", "Wireless Mouse", 100, 0.20, 100, 15, 100, 1, suppliers.get(0)));
         items.add(new Item("A002", "Mechanical Keyboard", 1500, 0.20, 40, 10, 50, 1, suppliers.get(0)));
         items.add(new Item("A003", "Office Chair", 3500, 0.20, 15, 5, 20, 2, suppliers.get(1)));
+
+        // === HashMap: SKU code -> Item, para sa mabilis na lookup ===
+        HashMap<String, Item> itemMap = new HashMap<>();
+        for (Item item : items) {
+            itemMap.put(item.getItemCode(), item);
+        }
+        HashMap<String, Supplier> supplierMap = new HashMap<>();
+        for (Supplier supplier : suppliers) {
+            supplierMap.put(supplier.getSupplierId(), supplier);
+        }
+
+        System.out.println("=== HASHMAP LOOKUP ===");
+        Item lookup = itemMap.get("A001");
+        if (lookup != null) {
+            System.out.println("Found: " + lookup.getItemName() + " | Stock: " + lookup.getStock());
+        }
+        // Kung walang SKU na ganun
+        Item notFound = itemMap.get("A999");
+        if (notFound == null) {
+            System.out.println("A999 not found in inventory.");
+        }
+        System.out.println("==============================");
+
+        // === TreeMap: parehong Map, pero naka-sort ayon sa key (SKU code) ===
+        TreeMap<String, Item> sortedItemMap = new TreeMap<>(itemMap);
+
+        System.out.println("=== TREEMAP (sorted by SKU) ===");
+        for (Map.Entry<String, Item> entry : sortedItemMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue().getItemName());
+        }
+
+        System.out.println("==============================");
+
+        TreeMap<String, Supplier> sortedSupplierMap = new TreeMap<>(supplierMap) ;
+        System.out.println("Supplier");
+        for (Map.Entry<String, Supplier> entry : sortedSupplierMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue().getSupplierName());
+        }
+        System.out.println("==============================");
+
+        // === HashSet: unique na category codes, walang duplicate ===
+        HashSet<Integer> categoryCodesUsed = new HashSet<>();
+        for (Item item : items) {
+            categoryCodesUsed.add(item.getCategoryCode());
+        }
+
+        System.out.println("=== UNIQUE CATEGORY CODES ===");
+        System.out.println(categoryCodesUsed);   // hal. [1, 2], walang paulit-ulit kahit 2 item ang category 1
+
+        // === Set operations: pagsuri kung kasama na ===
+        if (categoryCodesUsed.contains(1)) {
+            System.out.println("May items sa category 1 (Electronics/Accessories).");
+        }
+        System.out.println("==============================");
 
         Item item = items.get(0);
 

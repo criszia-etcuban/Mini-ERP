@@ -1,12 +1,10 @@
-import com.sun.source.tree.Tree;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
+import  java.util.List;
 
 public class Main {
 
@@ -18,27 +16,65 @@ public class Main {
         return item;
     }
     public static void main(String[] args) {
+
+        /*Generics*/
+        //Suppliers
+        Repository<Supplier> supplierRepo = new Repository<>();
+        supplierRepo.add("S001", new Supplier("S001", "TechParts Trading", "0917-123-4567", "techparts@email.com"));
+        supplierRepo.add("S002", new Supplier("S002", "OfficeWorld Supply", "0917-888-2222", "officeworld@email.com"));
+
+        //Items
+        Repository<Item> itemRepo = new Repository<>();
+        itemRepo.add("A001", new Item("A001", "Wireless Mouse", 100, 0.20, 100, 15, 100, 1, supplierRepo.findById("S001")));
+        itemRepo.add("A002", new  Item("A002", "Mechanical Keyboard", 1500, 0.20, 40, 10, 50, 1, supplierRepo.findById("S001")));
+        itemRepo.add("A003", new Item("A003", "Office Chair", 3500, 0.20, 15, 5, 20, 2, supplierRepo.findById("S002")));
+
+        System.out.println("=== ALL SUPPLIERS (via getAll) ===");
+        List<Supplier> allSuppliers = supplierRepo.getAll();
+        for (Supplier s : allSuppliers) {
+            System.out.println(s.getSupplierId() + " - " + s.getSupplierName());
+        }
+        System.out.println("==============================");
+
+        System.out.println("=== ALL ITEMS (via getAll) ===");
+        List<Item> allItems = itemRepo.getAll();
+        for (Item i : allItems) {
+            System.out.println(i.getItemCode() + " - " + i.getItemName() + " | Stock: " + i.getStock());
+        }
+        System.out.println("==============================");
+
+        Item found = itemRepo.findById("A001");
+        System.out.println("Found: " + found.getItemName());
+
+        Supplier foundSupplier = supplierRepo.findById("S001");
+        System.out.println("Found: " + foundSupplier.getSupplierName());
+        System.out.println("==============================");
+
+        System.out.println("Total items: " + itemRepo.count());
+        System.out.println("Total suppliers: " + supplierRepo.count());
+
         // ArrayList of Suppliers
-        ArrayList<Supplier> suppliers = new ArrayList<>();
-        suppliers.add(new Supplier("S001", "TechParts Trading", "0917-123-4567", "techparts@email.com"));
-        suppliers.add(new Supplier("S002", "OfficeWorld Supply", "0917-888-2222", "officeworld@email.com"));
+//        ArrayList<Supplier> suppliers = new ArrayList<>();
+//        suppliers.add(new Supplier("S001", "TechParts Trading", "0917-123-4567", "techparts@email.com"));
+//        suppliers.add(new Supplier("S002", "OfficeWorld Supply", "0917-888-2222", "officeworld@email.com"));
 
         // ArrayList of Items
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("A001", "Wireless Mouse", 100, 0.20, 100, 15, 100, 1, suppliers.get(0)));
-        items.add(new Item("A002", "Mechanical Keyboard", 1500, 0.20, 40, 10, 50, 1, suppliers.get(0)));
-        items.add(new Item("A003", "Office Chair", 3500, 0.20, 15, 5, 20, 2, suppliers.get(1)));
+//        ArrayList<Item> items = new ArrayList<>();
+//        items.add(new Item("A001", "Wireless Mouse", 100, 0.20, 100, 15, 100, 1, suppliers.get(0)));
+//        items.add(new Item("A002", "Mechanical Keyboard", 1500, 0.20, 40, 10, 50, 1, suppliers.get(0)));
+//        items.add(new Item("A003", "Office Chair", 3500, 0.20, 15, 5, 20, 2, suppliers.get(1)));
 
         // === HashMap: SKU code -> Item, para sa mabilis na lookup ===
-        HashMap<String, Item> itemMap = new HashMap<>();
+/*        HashMap<String, Item> itemMap = new HashMap<>();
         for (Item item : items) {
             itemMap.put(item.getItemCode(), item);
         }
         HashMap<String, Supplier> supplierMap = new HashMap<>();
         for (Supplier supplier : suppliers) {
             supplierMap.put(supplier.getSupplierId(), supplier);
-        }
+        }*/
 
+/*
         System.out.println("=== HASHMAP LOOKUP ===");
         Item lookup = itemMap.get("A001");
         if (lookup != null) {
@@ -184,6 +220,7 @@ public class Main {
         // Pag-remove ng item
 //        items.remove(1);   // tatanggalin ang keyboard (index 1)
 //        System.out.println("After removing index 1, total items: " + items.size());
+*/
 
     }
 }

@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class Item {
     // Encapsulation
     private String itemCode;

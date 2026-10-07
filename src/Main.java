@@ -3,6 +3,8 @@ import  java.util.List;
 import  java.util.TreeMap;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Main {
     public static Item findItemBySku(Repository<Item> itemRepo, String sku) throws ItemNotFoundException {
@@ -49,6 +51,47 @@ public class Main {
                     + " | Price: " + i.priceWithTax());
         }
         System.out.println("Total items: " + itemRepo.count());
+        System.out.println("==============================");
+
+        // === Predicate: yes/no check, nasa anyong lambda ===
+        Predicate<Item> isLowStock = item -> item.getStock() <= item.getReorderLevel();
+        System.out.println("=== LOW STOCK ITEMS ===");
+        for (Item item : itemRepo.getAll()) {
+            if (isLowStock.test(item)) {
+                System.out.println(item.getItemCode() + " - " + item.getItemName() + " (stock: " + item.getStock() + ")");
+            }
+        }
+        System.out.println("--------------------------------");
+        System.out.println("=== EXPENSIVE ===");
+        Predicate<Item> isExpensive = item -> item.priceWithTax() > 1000;
+        for (Item item : itemRepo.getAll()) {
+            if (isExpensive.test(item)) {
+                System.out.println(item.getItemName() + "Price: " + item.priceWithTax());
+            }
+        }
+        System.out.println("==============================");
+
+        // === Consumer: gumawa ng bagay sa bawat item, nasa anyong lambda ===
+        Consumer<Item> printSummary = item ->
+                System.out.println(item.getItemCode() + " | " + item.getItemName() + " | ₱" + item.priceWithTax());
+
+        System.out.println("=== ALL ITEMS (via Consumer) ===");
+        itemRepo.getAll().forEach(printSummary);
+
+        System.out.println("==============================");
+
+        // === Function: i-transform ang Item papunta sa iba, nasa anyong lambda ===
+        Function<Item, String> toLabel = item -> item.getItemName() + " (" + item.getCategoryName() + ")";
+
+        System.out.println("=== LABELS (via Function) ===");
+        for (Item item : itemRepo.getAll()) {
+            System.out.println(toLabel.apply(item));
+        }
+        System.out.println("--------------------------------");
+        Function<Item, Double> getTotalValue = item -> item.getUnitPrice() * item.getStock();
+        for (Item item : itemRepo.getAll()) {
+            System.out.println(item.getItemName() + " - Total Value of all stock: " + getTotalValue.apply(item));
+        }
         System.out.println("==============================");
 
         System.out.println("=== Reorder Qty ===");

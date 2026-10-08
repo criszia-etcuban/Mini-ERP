@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week2-Day5 Build Activity week&#10;refactor code">
+    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week3-Day1 Lambda&#10;Add lambda expressions and functional interfaces for item filtering">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -136,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1791355642843</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="week3-Day1 Lambda&#10;Add lambda expressions and functional interfaces for item filtering">
+      <created>1791362394819</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1791362394819</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,17 +171,7 @@
     <MESSAGE value="week2-Day3  Exception Handling&#10;Try/catch/finally, checked vs. unchecked, custom exceptions" />
     <MESSAGE value="week2-Day4  Generics&#10;Added Repository file" />
     <MESSAGE value="week2-Day5 Build Activity week&#10;refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="week2-Day5 Build Activity week&#10;refactor code" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="week3-Day1 Lambda&#10;Add lambda expressions and functional interfaces for item filtering" />
+    <option name="LAST_COMMIT_MESSAGE" value="week3-Day1 Lambda&#10;Add lambda expressions and functional interfaces for item filtering" />
   </component>
 </project>

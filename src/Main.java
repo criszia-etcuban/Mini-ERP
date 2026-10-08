@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Main {
     public static Item findItemBySku(Repository<Item> itemRepo, String sku) throws ItemNotFoundException {
@@ -24,10 +25,20 @@ public class Main {
 
         //Items
         Repository<Item> itemRepo = new Repository<>();
-        itemRepo.add("A001", new Item("A001", "Wireless Mouse", 100, 0.20, 100, 15, 100, 1, supplierRepo.findById("S001")));
-        itemRepo.add("A002", new  Item("A002", "Mechanical Keyboard", 1500, 0.20, 5, 10, 50, 1, supplierRepo.findById("S001")));
-        itemRepo.add("A003", new Item("A003", "Office Chair", 3500, 0.20, 2, 5, 20, 2, supplierRepo.findById("S002")));
+        itemRepo.add("A001", new Item("A001", "Wireless Mouse", 100, 0.20, 10, 15, 100, 1, supplierRepo.findById("S001")));
+        itemRepo.add("A002", new Item("A002", "Mechanical Keyboard", 1500, 0.20, 40, 10, 50, 1, supplierRepo.findById("S001")));
+        itemRepo.add("A003", new Item("A003", "Office Chair", 3500, 0.20, 15, 5, 20, 2, supplierRepo.findById("S002")));
 
+        // Purchase orders (valid quantities lahat)
+        LinkedList<PurchaseOrder> purchaseOrders = new LinkedList<>();
+        purchaseOrders.add(new PurchaseOrder("PO-001", "2026-10-01", itemRepo.findById("A001"), 20));
+        purchaseOrders.add(new PurchaseOrder("PO-002", "2026-10-02", itemRepo.findById("A003"), 5));
+        purchaseOrders.add(new PurchaseOrder("PO-003", "2026-10-03", itemRepo.findById("A002"), 10));
+
+        purchaseOrders.get(0).approve("Manager Cruz");
+        purchaseOrders.get(2).approve("Manager Cruz");
+
+/*
         System.out.println("=== ALL SUPPLIERS (via getAll) ===");
         List<Supplier> allSuppliers = supplierRepo.getAll();
         for (Supplier s : allSuppliers) {
@@ -35,6 +46,7 @@ public class Main {
         }
         System.out.println("Total suppliers: " + supplierRepo.count());
         System.out.println("==============================");
+*/
 
         System.out.println("=== ALL ITEMS (via getAll) // ITEMS SORTED BY SKU ===");
         // === TreeMap: parehong Map, pero naka-sort ayon sa key (SKU code) ===
@@ -71,6 +83,7 @@ public class Main {
         }
         System.out.println("==============================");
 
+/*
         // === Consumer: gumawa ng bagay sa bawat item, nasa anyong lambda ===
         Consumer<Item> printSummary = item ->
                 System.out.println(item.getItemCode() + " | " + item.getItemName() + " | ₱" + item.priceWithTax());
@@ -79,7 +92,9 @@ public class Main {
         itemRepo.getAll().forEach(printSummary);
 
         System.out.println("==============================");
+*/
 
+/*
         // === Function: i-transform ang Item papunta sa iba, nasa anyong lambda ===
         Function<Item, String> toLabel = item -> item.getItemName() + " (" + item.getCategoryName() + ")";
 
@@ -93,7 +108,9 @@ public class Main {
             System.out.println(item.getItemName() + " - Total Value of all stock: " + getTotalValue.apply(item));
         }
         System.out.println("==============================");
+*/
 
+/*
         System.out.println("=== Reorder Qty ===");
         Item item = itemRepo.findById("A001");
 
@@ -119,7 +136,9 @@ public class Main {
             System.out.println("STOPPED: " + e.getMessage());
         }
         System.out.println("==============================");
+*/
 
+/*
         // LinkedList of PurchaseOrders, same List interface, magkaiba lang sa loob
         LinkedList<PurchaseOrder> purchaseOrders = new LinkedList<>();
         System.out.println("=== PURCHASE ORDERS ===");
@@ -141,7 +160,9 @@ public class Main {
             System.out.println("Status: " + po.getApprovalStatus());
         }
         System.out.println("==============================");
+*/
 
+/*
         System.out.println("=== LOOK UP ===");
         Item found = itemRepo.findById("A001");
         System.out.println("Found: " + found.getItemName());
@@ -154,5 +175,75 @@ public class Main {
             System.out.println("A999 not found in inventory.");
         }
         System.out.println("==============================");
+*/
+
+        List<Item> allItems = itemRepo.getAll();
+
+        // === 1. FILTER: low-stock items ===
+        System.out.println("=== LOW STOCK ITEMS (filter) ===");
+        List<Item> lowStockItems = allItems.stream()
+                .filter(item -> item.getStock() <= item.getReorderLevel())
+                .toList();
+
+        lowStockItems.forEach(item ->
+                System.out.println(item.getItemCode() + " - " + item.getItemName()
+                        + " | Stock: " + item.getStock()
+                        + " | Reorder level: " + item.getReorderLevel()));
+
+        System.out.println("==============================");
+
+        // === 2. MAP: kunin lang ang pangalan ng bawat item ===
+        System.out.println("=== ITEM NAMES (map) ===");
+        List<String> itemNames = allItems.stream()
+                .map(item -> item.getItemName())
+                .toList();
+        System.out.println(itemNames);
+
+        System.out.println("==============================");
+
+        // === 3. FILTER + MAP: pangalan ng low-stock items lang ===
+        System.out.println("=== LOW STOCK NAMES (filter + map) ===");
+        String lowStockNames = allItems.stream()
+                .filter(item -> item.getStock() <= item.getReorderLevel())
+                .map(item -> item.getItemName())
+                .collect(Collectors.joining(", "));
+        System.out.println(lowStockNames);
+
+        System.out.println("==============================");
+
+        // === 4. COUNT ===
+        long lowStockCount = allItems.stream()
+                .filter(item -> item.getStock() <= item.getReorderLevel())
+                .count();
+        System.out.println("Number of low-stock items: " + lowStockCount);
+
+        System.out.println("==============================");
+
+        // === 5. MAP + SUM: total PO value ===
+        double totalPOValue = purchaseOrders.stream()
+                .mapToDouble(po -> po.calculateTotal())
+                .sum();
+        System.out.println("Total PO value: ₱" + totalPOValue);
+
+        // === 6. REDUCE: parehong resulta, pero explicit ang pagsasama ===
+        double totalViaReduce = purchaseOrders.stream()
+                .map(po -> po.calculateTotal())
+                .reduce(0.0, (a, b) -> a + b);
+        System.out.println("Total PO value (reduce): ₱" + totalViaReduce);
+
+        // === 7. FILTER + SUM: total ng APPROVED na PO lang ===
+        double approvedTotal = purchaseOrders.stream()
+                .filter(po -> po.isApproved())
+                .mapToDouble(po -> po.calculateTotal())
+                .sum();
+        System.out.println("Total APPROVED PO value: ₱" + approvedTotal);
+
+        System.out.println("==============================");
+
+        // === 8. MAP + SUM: total value ng inventory (price x stock) ===
+        double inventoryValue = allItems.stream()
+                .mapToDouble(item -> item.getUnitPrice() * item.getStock())
+                .sum();
+        System.out.println("Total inventory value: ₱" + inventoryValue);
     }
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week3-Day1 Lambda&#10;Add lambda expressions and functional interfaces for item filtering">
+    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week3-Day2 streams I&#10;Add Stream API: filter low-stock items and compute total PO value">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -143,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1791362394819</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="week3-Day2 streams I&#10;Add Stream API: filter low-stock items and compute total PO value">
+      <created>1791440528864</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1791440528864</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +179,7 @@
     <MESSAGE value="week2-Day4  Generics&#10;Added Repository file" />
     <MESSAGE value="week2-Day5 Build Activity week&#10;refactor code" />
     <MESSAGE value="week3-Day1 Lambda&#10;Add lambda expressions and functional interfaces for item filtering" />
-    <option name="LAST_COMMIT_MESSAGE" value="week3-Day1 Lambda&#10;Add lambda expressions and functional interfaces for item filtering" />
+    <MESSAGE value="week3-Day2 streams I&#10;Add Stream API: filter low-stock items and compute total PO value" />
+    <option name="LAST_COMMIT_MESSAGE" value="week3-Day2 streams I&#10;Add Stream API: filter low-stock items and compute total PO value" />
   </component>
 </project>

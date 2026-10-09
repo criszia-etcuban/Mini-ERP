@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class Main {
     public static Item findItemBySku(Repository<Item> itemRepo, String sku) throws ItemNotFoundException {
@@ -48,6 +49,7 @@ public class Main {
         System.out.println("==============================");
 */
 
+/*
         System.out.println("=== ALL ITEMS (via getAll) // ITEMS SORTED BY SKU ===");
         // === TreeMap: parehong Map, pero naka-sort ayon sa key (SKU code) ===
         TreeMap<String, Item> sortedByCode = new TreeMap<>();
@@ -64,7 +66,9 @@ public class Main {
         }
         System.out.println("Total items: " + itemRepo.count());
         System.out.println("==============================");
+*/
 
+/*
         // === Predicate: yes/no check, nasa anyong lambda ===
         Predicate<Item> isLowStock = item -> item.getStock() <= item.getReorderLevel();
         System.out.println("=== LOW STOCK ITEMS ===");
@@ -82,6 +86,7 @@ public class Main {
             }
         }
         System.out.println("==============================");
+*/
 
 /*
         // === Consumer: gumawa ng bagay sa bawat item, nasa anyong lambda ===
@@ -179,6 +184,7 @@ public class Main {
 
         List<Item> allItems = itemRepo.getAll();
 
+/*
         // === 1. FILTER: low-stock items ===
         System.out.println("=== LOW STOCK ITEMS (filter) ===");
         List<Item> lowStockItems = allItems.stream()
@@ -191,7 +197,9 @@ public class Main {
                         + " | Reorder level: " + item.getReorderLevel()));
 
         System.out.println("==============================");
+*/
 
+/*
         // === 2. MAP: kunin lang ang pangalan ng bawat item ===
         System.out.println("=== ITEM NAMES (map) ===");
         List<String> itemNames = allItems.stream()
@@ -210,7 +218,9 @@ public class Main {
         System.out.println(lowStockNames);
 
         System.out.println("==============================");
+*/
 
+/*
         // === 4. COUNT ===
         long lowStockCount = allItems.stream()
                 .filter(item -> item.getStock() <= item.getReorderLevel())
@@ -218,7 +228,9 @@ public class Main {
         System.out.println("Number of low-stock items: " + lowStockCount);
 
         System.out.println("==============================");
+*/
 
+/*
         // === 5. MAP + SUM: total PO value ===
         double totalPOValue = purchaseOrders.stream()
                 .mapToDouble(po -> po.calculateTotal())
@@ -239,11 +251,130 @@ public class Main {
         System.out.println("Total APPROVED PO value: ₱" + approvedTotal);
 
         System.out.println("==============================");
+*/
 
+/*
         // === 8. MAP + SUM: total value ng inventory (price x stock) ===
         double inventoryValue = allItems.stream()
                 .mapToDouble(item -> item.getUnitPrice() * item.getStock())
                 .sum();
         System.out.println("Total inventory value: ₱" + inventoryValue);
+*/
+        // === 1. GROUPING: items bawat supplier ===
+        System.out.println("=== ITEMS BY SUPPLIER ===");
+        Map<String, List<Item>> itemsBySupplier = allItems.stream()
+                .collect(Collectors.groupingBy(
+                        i -> i.getSupplier().getSupplierName(),   // paano mag-grupo
+                        TreeMap::new,                              // naka-sort ang supplier names
+                        Collectors.toList()));                     // ano ang laman ng bawat grupo
+
+        itemsBySupplier.forEach((supplierName, itemList) -> {
+            System.out.println(supplierName);
+            itemList.forEach(i -> System.out.println("  - " + i.getItemCode() + " " + i.getItemName()));
+        });
+        System.out.println("==============================");
+
+        // === 2. GROUPING + COUNTING: ilang item bawat supplier ===
+        System.out.println("=== ITEM COUNT BY SUPPLIER ===");
+        Map<String, Long> countBySupplier = allItems.stream()
+                .collect(Collectors.groupingBy(
+                        i -> i.getSupplier().getSupplierName(),
+                        TreeMap::new,
+                        Collectors.counting()));
+
+        countBySupplier.forEach((name, count) ->
+                System.out.println(name + " -> " + count + " item(s)"));
+        System.out.println("==============================");
+
+        // === 3. GROUPING + SUMMING: halaga ng stock bawat supplier ===
+        System.out.println("=== STOCK VALUE BY SUPPLIER ===");
+        Map<String, Double> valueBySupplier = allItems.stream()
+                .collect(Collectors.groupingBy(
+                        i -> i.getSupplier().getSupplierName(),
+                        TreeMap::new,
+                        Collectors.summingDouble(i -> i.getUnitPrice() * i.getStock())));
+
+        valueBySupplier.forEach((name, value) ->
+                System.out.println(name + " -> ₱" + value));
+
+        System.out.println("==============================");
+
+// === 4. GROUPING + MAPPING: pangalan lang ng items bawat supplier ===
+        System.out.println("=== ITEM NAMES BY SUPPLIER ===");
+        Map<String, List<String>> namesBySupplier = allItems.stream()
+                .collect(Collectors.groupingBy(
+                        i -> i.getSupplier().getSupplierName(),
+                        TreeMap::new,
+                        Collectors.mapping(Item::getItemName, Collectors.toList())));
+
+        System.out.println(namesBySupplier);
+
+        System.out.println("==============================");
+
+// === 5. FILTER + GROUPING: ilang piraso ang dapat i-reorder, bawat supplier ===
+        System.out.println("=== REORDER NEEDED BY SUPPLIER ===");
+        Map<String, Integer> reorderBySupplier = allItems.stream()
+                .filter(i -> i.getStock() <= i.getReorderLevel())
+                .collect(Collectors.groupingBy(
+                        i -> i.getSupplier().getSupplierName(),
+                        TreeMap::new,
+                        Collectors.summingInt(Item::calculateReorderQty)));
+
+        reorderBySupplier.forEach((name, qty) ->
+                System.out.println("Contact " + name + " -> reorder " + qty + " pcs"));
+
+        System.out.println("==============================");
+
+// === 6. SORTING ===
+        System.out.println("=== SORTED BY PRICE (mura -> mahal) ===");
+        allItems.stream()
+                .sorted(Comparator.comparingDouble(Item::getUnitPrice))
+                .forEach(i -> System.out.println(i.getItemName() + " | ₱" + i.getUnitPrice()));
+
+        System.out.println("=== SORTED BY PRICE (mahal -> mura) ===");
+        allItems.stream()
+                .sorted(Comparator.comparingDouble(Item::getUnitPrice).reversed())
+                .forEach(i -> System.out.println(i.getItemName() + " | ₱" + i.getUnitPrice()));
+
+        System.out.println("=== SORTED BY NAME (A -> Z) ===");
+        allItems.stream()
+                .sorted(Comparator.comparing(Item::getItemName))
+                .forEach(i -> System.out.println(i.getItemName()));
+
+        System.out.println("=== SORTED BY CATEGORY, THEN PRICE ===");
+        allItems.stream()
+                .sorted(Comparator.comparingInt(Item::getCategoryCode)
+                        .thenComparingDouble(Item::getUnitPrice))
+                .forEach(i -> System.out.println(i.getCategoryName() + " | " + i.getItemName() + " | ₱" + i.getUnitPrice()));
+
+        System.out.println("==============================");
+
+// === 7. PURCHASE ORDERS: grouping at sorting ===
+        System.out.println("=== PO TOTAL BY STATUS ===");
+        Map<String, Double> poByStatus = purchaseOrders.stream()
+                .collect(Collectors.groupingBy(
+                        po -> po.isApproved() ? "APPROVED" : "PENDING",
+                        TreeMap::new,
+                        Collectors.summingDouble(PurchaseOrder::calculateTotal)));
+
+        poByStatus.forEach((status, total) ->
+                System.out.println(status + " -> ₱" + total));
+
+        System.out.println("=== PO TOTAL BY SUPPLIER ===");
+        Map<String, Double> poBySupplier = purchaseOrders.stream()
+                .collect(Collectors.groupingBy(
+                        po -> po.getItem().getSupplier().getSupplierName(),
+                        TreeMap::new,
+                        Collectors.summingDouble(PurchaseOrder::calculateTotal)));
+
+        poBySupplier.forEach((name, total) ->
+                System.out.println(name + " -> ₱" + total));
+
+        System.out.println("=== PO RANKED BY TOTAL (pinakamalaki muna) ===");
+        purchaseOrders.stream()
+                .sorted(Comparator.comparingDouble(PurchaseOrder::calculateTotal).reversed())
+                .forEach(po -> System.out.println(po.getOrderId() + " | ₱" + po.calculateTotal()
+                        + " | " + po.getApprovalStatus()));
+
     }
 }

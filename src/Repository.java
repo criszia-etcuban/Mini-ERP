@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class Repository<T> {
     private HashMap<String, T> storage = new HashMap<>();
@@ -23,5 +24,9 @@ public class Repository<T> {
 
     public int count() {
         return storage.size();
+    }
+
+    public Optional<T> find(String id) {
+        return Optional.ofNullable(storage.get(id));
     }
 }

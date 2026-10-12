@@ -7,14 +7,12 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.Comparator;
+import  java.util.Optional;
 
 public class Main {
     public static Item findItemBySku(Repository<Item> itemRepo, String sku) throws ItemNotFoundException {
-        Item item = itemRepo.findById(sku);
-        if (item == null) {
-            throw new ItemNotFoundException("No item found with SKU: " + sku);
-        }
-        return item;
+            return itemRepo.find(sku)
+                    .orElseThrow(() -> new ItemNotFoundException("No item with SKU: " + sku));
     }
     public static void main(String[] args) {
 
@@ -299,7 +297,7 @@ public class Main {
 
         System.out.println("==============================");
 
-// === 4. GROUPING + MAPPING: pangalan lang ng items bawat supplier ===
+        // === 4. GROUPING + MAPPING: pangalan lang ng items bawat supplier ===
         System.out.println("=== ITEM NAMES BY SUPPLIER ===");
         Map<String, List<String>> namesBySupplier = allItems.stream()
                 .collect(Collectors.groupingBy(
@@ -311,7 +309,7 @@ public class Main {
 
         System.out.println("==============================");
 
-// === 5. FILTER + GROUPING: ilang piraso ang dapat i-reorder, bawat supplier ===
+        // === 5. FILTER + GROUPING: ilang piraso ang dapat i-reorder, bawat supplier ===
         System.out.println("=== REORDER NEEDED BY SUPPLIER ===");
         Map<String, Integer> reorderBySupplier = allItems.stream()
                 .filter(i -> i.getStock() <= i.getReorderLevel())
@@ -325,7 +323,7 @@ public class Main {
 
         System.out.println("==============================");
 
-// === 6. SORTING ===
+        // === 6. SORTING ===
         System.out.println("=== SORTED BY PRICE (mura -> mahal) ===");
         allItems.stream()
                 .sorted(Comparator.comparingDouble(Item::getUnitPrice))
@@ -349,7 +347,7 @@ public class Main {
 
         System.out.println("==============================");
 
-// === 7. PURCHASE ORDERS: grouping at sorting ===
+        // === 7. PURCHASE ORDERS: grouping at sorting ===
         System.out.println("=== PO TOTAL BY STATUS ===");
         Map<String, Double> poByStatus = purchaseOrders.stream()
                 .collect(Collectors.groupingBy(
@@ -376,5 +374,113 @@ public class Main {
                 .forEach(po -> System.out.println(po.getOrderId() + " | ₱" + po.calculateTotal()
                         + " | " + po.getApprovalStatus()));
 
+        System.out.println("==============================");
+        // === 1. OPTIONAL BASICS ===
+        System.out.println("=== 1. OPTIONAL BASICS ===");
+        Optional<Item> found = itemRepo.find("A001");
+        Optional<Item> missing = itemRepo.find("A999");
+
+        System.out.println("A001 present? " + found.isPresent());
+        System.out.println("A999 present? " + missing.isPresent());
+
+        System.out.println("==============================");
+
+        // === 2. ifPresent / ifPresentOrElse ===
+        System.out.println("=== 2. ifPresent / ifPresentOrElse ===");
+        itemRepo.find("A001")
+                .ifPresent(x -> System.out.println("Found: " + x.getItemName()));
+
+        itemRepo.find("A999").ifPresentOrElse(
+                x -> System.out.println("Found: " + x.getItemName()),
+                () -> System.out.println("Not found: A999"));
+
+        System.out.println("==============================");
+
+        // === 3. map + orElse ===
+        System.out.println("=== 3. map + orElse ===");
+        String name1 = itemRepo.find("A001")
+                .map(Item::getItemName)
+                .orElse("Unknown item");
+        String name2 = itemRepo.find("A999")
+                .map(Item::getItemName)
+                .orElse("Unknown item");
+        System.out.println("A001 -> " + name1);
+        System.out.println("A999 -> " + name2);
+
+        System.out.println("==============================");
+
+        // === 4. filter sa Optional ===
+        System.out.println("=== 4. filter sa Optional ===");
+        boolean a001Low = itemRepo.find("A001")
+                .filter(x -> x.getStock() <= x.getReorderLevel())
+                .isPresent();
+        boolean a002Low = itemRepo.find("A002")
+                .filter(x -> x.getStock() <= x.getReorderLevel())
+                .isPresent();
+        System.out.println("A001 low stock? " + a001Low);
+        System.out.println("A002 low stock? " + a002Low);
+
+        System.out.println("==============================");
+
+        // === 5. orElseThrow, gamit ang findItemBySku ===
+        System.out.println("=== 5. orElseThrow ===");
+        try {
+            Item ok = findItemBySku(itemRepo, "A001");
+            System.out.println("Found: " + ok.getItemName());
+
+            Item bad = findItemBySku(itemRepo, "A999");
+            System.out.println("Hindi na ito aabutan: " + bad.getItemName());
+        } catch (ItemNotFoundException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+
+        System.out.println("==============================");
+
+// === 6. Optional mula sa Stream ===
+        System.out.println("=== 6. Optional mula sa Stream ===");
+        Optional<Item> mostExpensive = allItems.stream()
+                .max(Comparator.comparingDouble(Item::getUnitPrice));
+        mostExpensive.ifPresent(x ->
+                System.out.println("Most expensive: " + x.getItemName() + " | ₱" + x.getUnitPrice()));
+
+        Optional<Item> firstLowStock = allItems.stream()
+                .filter(x -> x.getStock() <= x.getReorderLevel())
+                .findFirst();
+        System.out.println("First low-stock: "
+                + firstLowStock.map(Item::getItemName).orElse("none"));
+
+        Optional<PurchaseOrder> po2 = purchaseOrders.stream()
+                .filter(po -> po.getOrderId().equals("PO-002"))
+                .findFirst();
+        po2.ifPresent(po -> System.out.println(po.getOrderId() + " | " + po.getApprovalStatus()));
+
+        System.out.println("==============================");
+
+// === 7. METHOD REFERENCES ===
+        System.out.println("=== 7. METHOD REFERENCES ===");
+
+// Uri 1 (method ng elemento) + Uri 3 (method ng tiyak na object)
+        allItems.stream()
+                .sorted(Comparator.comparing(Item::getItemName))
+                .map(Item::getItemName)
+                .forEach(System.out::println);
+
+// Uri 2 (static method): Double::sum
+        double totalPO = purchaseOrders.stream()
+                .map(PurchaseOrder::calculateTotal)
+                .reduce(0.0, Double::sum);
+        System.out.println("Total PO value: ₱" + totalPO);
+
+// Uri 4 (constructor): LinkedList::new
+        LinkedList<String> nameList = allItems.stream()
+                .map(Item::getItemName)
+                .collect(Collectors.toCollection(LinkedList::new));
+        System.out.println("Names: " + nameList);
+
+// Hindi pwedeng gawing method reference, may dagdag na kondisyon, kaya lambda
+        long lowCount = allItems.stream()
+                .filter(x -> x.getStock() <= x.getReorderLevel())
+                .count();
+        System.out.println("Low-stock count: " + lowCount);
     }
 }

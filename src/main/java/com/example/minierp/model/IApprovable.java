@@ -1,3 +1,5 @@
+package com.example.minierp.model;
+
 public interface IApprovable {
     boolean isApproved();
     void approve(String approverName);

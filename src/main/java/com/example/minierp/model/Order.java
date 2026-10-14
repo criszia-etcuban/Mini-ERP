@@ -1,3 +1,5 @@
+package com.example.minierp.model;
+
 public abstract class Order {
     protected String orderId;
     protected String orderDate;

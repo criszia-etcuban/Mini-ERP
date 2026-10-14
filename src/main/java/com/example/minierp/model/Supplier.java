@@ -1,3 +1,5 @@
+package com.example.minierp.model;
+
 public class Supplier {
     private String supplierId;
     private String supplierName;

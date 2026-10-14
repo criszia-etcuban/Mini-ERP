@@ -1,3 +1,6 @@
+package com.example.minierp.model;
+
+import com.example.minierp.exception.InsufficientStockException;
 import java.util.HashMap;
 
 public class Item {

@@ -1,3 +1,7 @@
+package com.example.minierp.model;
+
+import com.example.minierp.exception.InvalidPurchaseOrderException;
+
 //extends Order = ginagawang PurchaseOrder ang isang uri ng Order. namamana nya ang orderId, orderDate, printSummary
 //implements IApprovable = obligado siyang magkaroon ng isApproved(), approve(...), at getApprovalStatus().
 public class PurchaseOrder extends Order implements IApprovable {

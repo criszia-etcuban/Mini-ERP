@@ -2,13 +2,15 @@ package com.example.minierp.model;
 
 import com.example.minierp.exception.InvalidPurchaseOrderException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Purchase Order")
 class PurchaseOrderTest {
 
     private Item mouse;
@@ -20,31 +22,49 @@ class PurchaseOrderTest {
     }
 
     @Test
-    void totalComesFromItemPriceAndQuantity() {
-        PurchaseOrder po = new PurchaseOrder("PO-001", "2026-10-01", mouse, 20);
-        assertEquals(2400.0, po.calculateTotal(), 0.001);
-    }
-
-    @Test
+    @DisplayName("Ang bagong PO ay pending")
     void newPurchaseOrderIsPending() {
         PurchaseOrder po = new PurchaseOrder("PO-001", "2026-10-01", mouse, 20);
-        assertFalse(po.isApproved());
-        assertEquals("PENDING APPROVAL", po.getApprovalStatus());
+
+        assertAll("bagong PO",
+                () -> assertEquals("PO-001", po.getOrderId()),
+                () -> assertEquals(20, po.getQty()),
+                () -> assertSame(mouse, po.getItem()),
+                () -> assertFalse(po.isApproved()),
+                () -> assertEquals("PENDING APPROVAL", po.getApprovalStatus())
+        );
     }
 
     @Test
+    @DisplayName("Nagbabago ang status kapag na-approve")
     void approvingChangesTheStatus() {
         PurchaseOrder po = new PurchaseOrder("PO-001", "2026-10-01", mouse, 20);
+
         po.approve("Manager Cruz");
-        assertTrue(po.isApproved());
-        assertEquals("APPROVED by Manager Cruz", po.getApprovalStatus());
+
+        assertAll("approved na PO",
+                () -> assertTrue(po.isApproved()),
+                () -> assertEquals("APPROVED by Manager Cruz", po.getApprovalStatus())
+        );
     }
 
-    @Test
-    void zeroOrNegativeQuantityIsRejected() {
+    @ParameterizedTest(name = "qty {0} -> total {1}")
+    @CsvSource({
+            "1,   120.0",
+            "20,  2400.0",
+            "100, 12000.0"
+    })
+    @DisplayName("Sumusunod ang total sa dami")
+    void totalScalesWithQuantity(int qty, double expected) {
+        PurchaseOrder po = new PurchaseOrder("PO-001", "2026-10-01", mouse, qty);
+        assertEquals(expected, po.calculateTotal(), 0.001);
+    }
+
+    @ParameterizedTest(name = "qty {0} ay tinatanggihan")
+    @ValueSource(ints = {0, -1, -5, -100})
+    @DisplayName("Tinatanggihan ang qty na 0 o negatibo")
+    void invalidQuantitiesAreRejected(int qty) {
         assertThrows(InvalidPurchaseOrderException.class,
-                () -> new PurchaseOrder("PO-002", "2026-10-02", mouse, 0));
-        assertThrows(InvalidPurchaseOrderException.class,
-                () -> new PurchaseOrder("PO-003", "2026-10-03", mouse, -5));
+                () -> new PurchaseOrder("PO-X", "2026-10-01", mouse, qty));
     }
 }

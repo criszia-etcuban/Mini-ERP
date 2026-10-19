@@ -48,65 +48,15 @@ public class Main {
         purchaseOrders.get(0).approve("Manager Cruz");
         purchaseOrders.get(2).approve("Manager Cruz");
 
-/*
-        System.out.println("=== ALL SUPPLIERS (via getAll) ===");
+        List<Item> allItems = itemRepo.getAll();
+
+        System.out.println("=== ALL SUPPLIERS ===");
         List<Supplier> allSuppliers = supplierRepo.getAll();
         for (Supplier s : allSuppliers) {
             System.out.println(s.getSupplierId() + " - " + s.getSupplierName() + " | " + s.getContactNumber() + " | " + s.getEmail());
         }
         System.out.println("Total suppliers: " + supplierRepo.count());
         System.out.println("==============================");
-*/
-
-/*
-        System.out.println("=== ALL ITEMS (via getAll) // ITEMS SORTED BY SKU ===");
-        // === TreeMap: parehong Map, pero naka-sort ayon sa key (SKU code) ===
-        TreeMap<String, Item> sortedByCode = new TreeMap<>();
-        for (Item i : itemRepo.getAll()) {
-            sortedByCode.put(i.getItemCode(), i);
-        }
-
-        for (Map.Entry<String, Item> entry : sortedByCode.entrySet()) {
-            Item i = entry.getValue();
-            System.out.println(i.getItemCode() + " - " + i.getItemName()
-                    + " | Stock: " + i.getStock()
-                    + " | Category: " + i.getCategoryName()
-                    + " | Price: " + i.priceWithTax());
-        }
-        System.out.println("Total items: " + itemRepo.count());
-        System.out.println("==============================");
-*/
-
-/*
-        // === Predicate: yes/no check, nasa anyong lambda ===
-        Predicate<Item> isLowStock = item -> item.getStock() <= item.getReorderLevel();
-        System.out.println("=== LOW STOCK ITEMS ===");
-        for (Item item : itemRepo.getAll()) {
-            if (isLowStock.test(item)) {
-                System.out.println(item.getItemCode() + " - " + item.getItemName() + " (stock: " + item.getStock() + ")");
-            }
-        }
-        System.out.println("--------------------------------");
-        System.out.println("=== EXPENSIVE ===");
-        Predicate<Item> isExpensive = item -> item.priceWithTax() > 1000;
-        for (Item item : itemRepo.getAll()) {
-            if (isExpensive.test(item)) {
-                System.out.println(item.getItemName() + "Price: " + item.priceWithTax());
-            }
-        }
-        System.out.println("==============================");
-*/
-
-/*
-        // === Consumer: gumawa ng bagay sa bawat item, nasa anyong lambda ===
-        Consumer<Item> printSummary = item ->
-                System.out.println(item.getItemCode() + " | " + item.getItemName() + " | ₱" + item.priceWithTax());
-
-        System.out.println("=== ALL ITEMS (via Consumer) ===");
-        itemRepo.getAll().forEach(printSummary);
-
-        System.out.println("==============================");
-*/
 
 /*
         // === Function: i-transform ang Item papunta sa iba, nasa anyong lambda ===
@@ -191,7 +141,6 @@ public class Main {
         System.out.println("==============================");
 */
 
-        List<Item> allItems = itemRepo.getAll();
 
 /*
         // === 1. FILTER: low-stock items ===
@@ -279,7 +228,7 @@ public class Main {
 
         itemsBySupplier.forEach((supplierName, itemList) -> {
             System.out.println(supplierName);
-            itemList.forEach(i -> System.out.println("  - " + i.getItemCode() + " " + i.getItemName()));
+            itemList.forEach(i -> System.out.println("  - " + i.getItemCode() + " " + i.getItemName() + " | " + i.getCategoryName() + " | " + i.priceWithTax() + " | " + i.getStock() + " PCS"));
         });
         System.out.println("==============================");
 

@@ -4,35 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week3-Day4 Optional Class and Method reference&#10;Add Optional and method references">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_10_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_10_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_10_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_10_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_10_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_10_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/ItemTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/PurchaseOrderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/repository/RepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week4-Day1 Maven fundamentals&#10;Convert project to Maven with packages and JUnit tests">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/LifecycleDemoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/PerClassLifecycleDemoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mini ERP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Mini ERP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IApprovable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/IApprovable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InsufficientStockException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/exception/InsufficientStockException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InvalidPurchaseOrderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/exception/InvalidPurchaseOrderException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ItemNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/exception/ItemNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PurchaseOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/PurchaseOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minierp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/ItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/ItemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/PurchaseOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/PurchaseOrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/minierp/repository/RepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/repository/RepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,19 +68,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in Mini ERP">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.minierp.Main" />
-      <module name="Mini ERP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.minierp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All in Mini ERP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Mini ERP" />
       <option name="PACKAGE_NAME" value="" />
@@ -110,16 +76,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ItemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LifecycleDemoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Mini ERP" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.minierp.model.*" />
+          <option name="PATTERN" value="com.example.minierp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.minierp.model" />
-      <option name="MAIN_CLASS_NAME" value="com.example.minierp.model.ItemTest" />
+      <option name="PACKAGE_NAME" value="com.example.minierp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.minierp.LifecycleDemoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PerClassLifecycleDemoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mini ERP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.minierp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.minierp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.minierp.PerClassLifecycleDemoTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,10 +139,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Mini ERP" />
+        <item itemvalue="JUnit.PerClassLifecycleDemoTest" />
+        <item itemvalue="JUnit.LifecycleDemoTest" />
         <item itemvalue="JUnit.RepositoryTest" />
         <item itemvalue="JUnit.PurchaseOrderTest" />
-        <item itemvalue="JUnit.ItemTest" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -286,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1791794630612</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="week4-Day1 Maven fundamentals&#10;Convert project to Maven with packages and JUnit tests">
+      <created>1791946700348</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1791946700348</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -318,6 +306,7 @@
     <MESSAGE value="week3-Day2 streams I&#10;Add Stream API: filter low-stock items and compute total PO value" />
     <MESSAGE value="week3-Day3 streams II&#10;Add advanced Stream API: groupingBy, collectors, and sorting for items and POs" />
     <MESSAGE value="week3-Day4 Optional Class and Method reference&#10;Add Optional and method references" />
-    <option name="LAST_COMMIT_MESSAGE" value="week3-Day4 Optional Class and Method reference&#10;Add Optional and method references" />
+    <MESSAGE value="week4-Day1 Maven fundamentals&#10;Convert project to Maven with packages and JUnit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="week4-Day1 Maven fundamentals&#10;Convert project to Maven with packages and JUnit tests" />
   </component>
 </project>

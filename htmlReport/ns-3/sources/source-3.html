@@ -1,0 +1,159 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PurchaseOrder</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.minierp.model</a>
+</div>
+
+<h1>Coverage Summary for Class: PurchaseOrder (com.example.minierp.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PurchaseOrder</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (17/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.minierp.model;
+&nbsp;
+&nbsp;import com.example.minierp.exception.InvalidPurchaseOrderException;
+&nbsp;
+&nbsp;//extends Order = ginagawang PurchaseOrder ang isang uri ng Order. namamana nya ang orderId, orderDate, printSummary
+&nbsp;//implements IApprovable = obligado siyang magkaroon ng isApproved(), approve(...), at getApprovalStatus().
+&nbsp;public class PurchaseOrder extends Order implements IApprovable {
+&nbsp;    private Item item;
+&nbsp;    private int qty;
+&nbsp;    private boolean approved;
+&nbsp;    private String approvedBy;
+&nbsp;
+&nbsp;    public PurchaseOrder(String orderId, String orderDate, Item item, int qty) {
+<b class="fc">&nbsp;        super(orderId, orderDate);   // call the constructor of Order //tumatawag sa constructor ng parent class (Order) para ma-set ang mga field na doon nagmula.</b>
+<b class="fc">&nbsp;        if (qty &lt;= 0) {</b>
+<b class="fc">&nbsp;            throw new InvalidPurchaseOrderException(&quot;Quantity must be greater than 0. Got: &quot; + qty);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this.item = item;</b>
+<b class="fc">&nbsp;        this.qty = qty;</b>
+<b class="fc">&nbsp;        this.approved = false;</b>
+<b class="fc">&nbsp;        this.approvedBy = null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // need to implement, abstract in Order
+&nbsp;    @Override
+&nbsp;    public double calculateTotal() {
+<b class="fc">&nbsp;        return item.calculateTotal(qty);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // need to implement, in IApprovable File
+&nbsp;    @Override
+&nbsp;    public boolean isApproved() {
+<b class="fc">&nbsp;        return approved;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void approve(String approverName) {
+<b class="fc">&nbsp;        this.approved = true;</b>
+<b class="fc">&nbsp;        this.approvedBy = approverName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String getApprovalStatus() {
+<b class="fc">&nbsp;        if (approved) {</b>
+<b class="fc">&nbsp;            return &quot;APPROVED by &quot; + approvedBy;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return &quot;PENDING APPROVAL&quot;;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Item getItem() { return item; }</b>
+<b class="fc">&nbsp;    public int getQty() { return qty; }</b>
+&nbsp;
+&nbsp;    public double calculateTotalWithDiscount() {
+<b class="fc">&nbsp;        return item.calculateTotalWithDiscount(qty);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-10-21 09:33</div>
+</div>
+</body>
+</html>

@@ -10,14 +10,9 @@ public abstract class Order {
     }
 
     public String getOrderId() { return orderId; }
-    public String getOrderDate() { return orderDate; }
+//    public String getOrderDate() { return orderDate; }
 
     // Abstract method: walang code, sa subclass ang gagawa
     public abstract double calculateTotal();
 
-    // Ordinary method: shared na ng lahat ng subclass, hindi na kailangang ulitin
-    public void printSummary() {
-        System.out.println("Order ID: " + orderId + " | Date: " + orderDate
-                + " | Total: ₱" + calculateTotal());
-    }
 }

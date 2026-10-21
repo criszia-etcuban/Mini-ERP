@@ -69,4 +69,23 @@ class RepositoryTest {
                 () -> assertEquals("new", repo.find("K1").get())
         );
     }
+
+    @Test
+    @DisplayName("Item Searched")
+    void searchItemName() {
+        repo.add("A001", "Wireless Mouse");
+        String result = repo.findById("A001");
+        repo.findById("A001");
+        assertEquals("Wireless Mouse", result);
+    }
+
+    @Test
+    @DisplayName("Search missing item")
+    void searchMissingItemReturnsNull() {
+        repo.add("A001", "Wireless Mouse");
+
+        String result = repo.findById("A999");
+
+        assertNull(result);
+    }
 }

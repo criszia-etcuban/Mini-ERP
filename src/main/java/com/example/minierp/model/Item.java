@@ -33,10 +33,10 @@ public class Item {
     public String getItemCode() { return itemCode; }
     public String getItemName() { return itemName; }
     public double getUnitPrice() { return unitPrice; }
-    public double getTaxRate() { return taxRate; }
+//    public double getTaxRate() { return taxRate; }
     public int getStock() { return stock; }
     public int getReorderLevel() { return reorderLevel; }
-    public int getTargetStock() { return targetStock; }
+//    public int getTargetStock() { return targetStock; }
     public int getCategoryCode() { return categoryCode; }
     public Supplier getSupplier() { return supplier; }
 
@@ -71,7 +71,7 @@ public class Item {
         return unitPrice * (1 + taxRate) * qty;
     }
 
-    public double priceWithTax() { return  unitPrice * (1 + taxRate);}
+//    public double priceWithTax() { return  unitPrice * (1 + taxRate);}
 
     public String getStockStatus() {
         if (stock == 0) {
@@ -90,13 +90,6 @@ public class Item {
         return targetStock - stock;
     }
 
-//    public void sell(int qty) {
-//        if (qty > stock) {
-//            System.out.println("Not enough stock for order of " + qty);
-//            return;
-//        }
-//        stock -= qty;
-//    }
     public void sell(int qty) throws InsufficientStockException {
         if (qty > stock) {
             throw new InsufficientStockException(
@@ -104,5 +97,23 @@ public class Item {
             );
         }
         stock -= qty;
+    }
+
+    public static final int DISCOUNT_MIN_QTY = 50;
+    public static final double DISCOUNT_RATE = 0.10;
+
+    // Amount of discount (before tax). No discount if not reach 50 pcs.
+    public double calculateDiscount(int qty) {
+        if (qty < DISCOUNT_MIN_QTY) {
+            return 0.0;
+        }
+        return unitPrice * qty * DISCOUNT_RATE;
+    }
+
+    // Total with discount: bawas muna ang diskwento, saka dagdagan ng tax.
+    public double calculateTotalWithDiscount(int qty) {
+        double subtotal = unitPrice * qty;
+        double afterDiscount = subtotal - calculateDiscount(qty);
+        return afterDiscount * (1 + taxRate);
     }
 }

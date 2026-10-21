@@ -20,9 +20,7 @@ public class Repository<T> {
         return new ArrayList<>(storage.values());
     }
 
-    public void remove(String id) {
-        storage.remove(id);
-    }
+//    public void remove(String id) { storage.remove(id); }
 
     public int count() {
         return storage.size();

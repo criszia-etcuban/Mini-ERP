@@ -1,0 +1,222 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Item</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.minierp.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Item (com.example.minierp.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Item</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (15/20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.7%
+  </span>
+  <span class="absValue">
+    (41/49)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.minierp.model;
+&nbsp;
+&nbsp;import com.example.minierp.exception.InsufficientStockException;
+&nbsp;import java.util.HashMap;
+&nbsp;
+&nbsp;public class Item {
+&nbsp;    // Encapsulation
+&nbsp;    private String itemCode;
+&nbsp;    private String itemName;
+&nbsp;    private double unitPrice;
+&nbsp;    private double taxRate;
+&nbsp;    private int stock;
+&nbsp;    private int reorderLevel;
+&nbsp;    private int targetStock;
+&nbsp;    private int categoryCode;
+&nbsp;    private Supplier supplier;   // Another class
+&nbsp;
+&nbsp;    // Constructor
+&nbsp;    public Item(String itemCode, String itemName, double unitPrice, double taxRate,
+<b class="fc">&nbsp;                int stock, int reorderLevel, int targetStock, int categoryCode, Supplier supplier) {</b>
+<b class="fc">&nbsp;        this.itemCode = itemCode;</b>
+<b class="fc">&nbsp;        this.itemName = itemName;</b>
+<b class="fc">&nbsp;        this.unitPrice = unitPrice;</b>
+<b class="fc">&nbsp;        this.taxRate = taxRate;</b>
+<b class="fc">&nbsp;        this.stock = stock;</b>
+<b class="fc">&nbsp;        this.reorderLevel = reorderLevel;</b>
+<b class="fc">&nbsp;        this.targetStock = targetStock;</b>
+<b class="fc">&nbsp;        this.categoryCode = categoryCode;</b>
+<b class="fc">&nbsp;        this.supplier = supplier;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Getters
+<b class="fc">&nbsp;    public String getItemCode() { return itemCode; }</b>
+<b class="fc">&nbsp;    public String getItemName() { return itemName; }</b>
+<b class="fc">&nbsp;    public double getUnitPrice() { return unitPrice; }</b>
+<b class="nc">&nbsp;    public double getTaxRate() { return taxRate; }</b>
+<b class="fc">&nbsp;    public int getStock() { return stock; }</b>
+<b class="nc">&nbsp;    public int getReorderLevel() { return reorderLevel; }</b>
+<b class="nc">&nbsp;    public int getTargetStock() { return targetStock; }</b>
+<b class="nc">&nbsp;    public int getCategoryCode() { return categoryCode; }</b>
+<b class="fc">&nbsp;    public Supplier getSupplier() { return supplier; }</b>
+&nbsp;
+&nbsp;    // Setters
+&nbsp;    public void setStock(int stock) {
+<b class="fc">&nbsp;        if (stock &lt; 0) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Out of Stock&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        this.stock = stock;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setUnitPrice(double unitPrice) {
+<b class="fc">&nbsp;        if (unitPrice &lt; 0) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Invalid Price&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        this.unitPrice = unitPrice;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // old static method
+&nbsp;    public String getCategoryName() {
+<b class="fc">&nbsp;        switch (categoryCode) {</b>
+<b class="fc">&nbsp;            case 1: return &quot;Accessories&quot;;</b>
+<b class="nc">&nbsp;            case 2: return &quot;Hardware&quot;;</b>
+<b class="nc">&nbsp;            case 3: return &quot;Software&quot;;</b>
+<b class="nc">&nbsp;            default: return &quot;Unknown&quot;;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public double calculateTotal(int qty) {
+<b class="fc">&nbsp;        return unitPrice * (1 + taxRate) * qty;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public double priceWithTax() { return  unitPrice * (1 + taxRate);}</b>
+&nbsp;
+&nbsp;    public String getStockStatus() {
+<b class="fc">&nbsp;        if (stock == 0) {</b>
+<b class="fc">&nbsp;            return &quot;OUT OF STOCK&quot;;</b>
+<b class="fc">&nbsp;        } else if (stock &lt;= reorderLevel) {</b>
+<b class="fc">&nbsp;            return &quot;LOW STOCK&quot;;</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            return &quot;GOOD&quot;;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public int calculateReorderQty() {
+<b class="fc">&nbsp;        if (stock &gt; reorderLevel) {</b>
+<b class="fc">&nbsp;            return 0;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return targetStock - stock;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void sell(int qty) throws InsufficientStockException {
+<b class="fc">&nbsp;        if (qty &gt; stock) {</b>
+<b class="fc">&nbsp;            throw new InsufficientStockException(</b>
+&nbsp;                    &quot;Not enough stock for &quot; + itemName + &quot; requested: &quot; + qty + &quot;, available: &quot; + stock
+&nbsp;            );
+&nbsp;        }
+<b class="fc">&nbsp;        stock -= qty;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static final int DISCOUNT_MIN_QTY = 50;
+&nbsp;    public static final double DISCOUNT_RATE = 0.10;
+&nbsp;
+&nbsp;    // Amount of discount (before tax). No discount if not reach 50 pcs.
+&nbsp;    public double calculateDiscount(int qty) {
+<b class="fc">&nbsp;        if (qty &lt; DISCOUNT_MIN_QTY) {</b>
+<b class="fc">&nbsp;            return 0.0;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return unitPrice * qty * DISCOUNT_RATE;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Total with discount: bawas muna ang diskwento, saka dagdagan ng tax.
+&nbsp;    public double calculateTotalWithDiscount(int qty) {
+<b class="fc">&nbsp;        double subtotal = unitPrice * qty;</b>
+<b class="fc">&nbsp;        double afterDiscount = subtotal - calculateDiscount(qty);</b>
+<b class="fc">&nbsp;        return afterDiscount * (1 + taxRate);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-10-21 09:33</div>
+</div>
+</body>
+</html>

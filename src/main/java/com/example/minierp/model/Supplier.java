@@ -18,11 +18,11 @@ public class Supplier {
     public String getContactNumber() { return contactNumber; }
     public String getEmail() { return email; }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
+//    public void setContactNumber(String contactNumber) {
+//        this.contactNumber = contactNumber;
+//    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 }

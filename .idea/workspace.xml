@@ -4,11 +4,81 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week4-Day1 Maven fundamentals&#10;Convert project to Maven with packages and JUnit tests">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/LifecycleDemoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/PerClassLifecycleDemoTest.java" afterDir="false" />
+    <list default="true" id="9b4cbe48-cd59-4ac6-8590-d3bc7c30bc73" name="Changes" comment="week4-Day3 JUnit Basic&#10;Expand JUnit tests: nested, parameterized, assertAll, and lifecycle demos">
+      <change afterPath="$PROJECT_DIR$/htmlReport/css/coverage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/css/idea.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/img/arrowDown.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/img/arrowUp.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/js/highlight.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/js/highlightjs-line-numbers.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-1/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-2/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-3/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htmlReport/ns-4/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/ItemLookupTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minierp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/PurchaseOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/PurchaseOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/model/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minierp/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minierp/repository/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/ItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/ItemTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/PurchaseOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/model/PurchaseOrderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/minierp/repository/RepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/minierp/repository/RepositoryTest.java" afterDir="false" />
@@ -17,6 +87,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="D:\JAVA\Mini ERP\htmlReport" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -68,6 +141,19 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in Mini ERP">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.minierp.Main" />
+      <module name="Mini ERP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.minierp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in Mini ERP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Mini ERP" />
       <option name="PACKAGE_NAME" value="" />
@@ -76,37 +162,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LifecycleDemoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Mini ERP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.minierp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.minierp" />
-      <option name="MAIN_CLASS_NAME" value="com.example.minierp.LifecycleDemoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PerClassLifecycleDemoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Mini ERP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.minierp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.minierp" />
-      <option name="MAIN_CLASS_NAME" value="com.example.minierp.PerClassLifecycleDemoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PurchaseOrderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ItemTest.getCorrectCategoryName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Mini ERP" />
       <extension name="coverage">
         <pattern>
@@ -115,13 +171,30 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.minierp.model" />
-      <option name="MAIN_CLASS_NAME" value="com.example.minierp.model.PurchaseOrderTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.example.minierp.model.ItemTest" />
+      <option name="METHOD_NAME" value="getCorrectCategoryName" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ItemTest.newItemHasCorrectDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mini ERP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.minierp.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.minierp.model" />
+      <option name="MAIN_CLASS_NAME" value="com.example.minierp.model.ItemTest" />
+      <option name="METHOD_NAME" value="newItemHasCorrectDetails" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RepositoryTest.searchMissingItemReturnsNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Mini ERP" />
       <extension name="coverage">
         <pattern>
@@ -131,7 +204,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.minierp.repository" />
       <option name="MAIN_CLASS_NAME" value="com.example.minierp.repository.RepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="searchMissingItemReturnsNull" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,10 +213,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Mini ERP" />
-        <item itemvalue="JUnit.PerClassLifecycleDemoTest" />
-        <item itemvalue="JUnit.LifecycleDemoTest" />
-        <item itemvalue="JUnit.RepositoryTest" />
-        <item itemvalue="JUnit.PurchaseOrderTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ItemTest.newItemHasCorrectDetails" />
+        <item itemvalue="JUnit.ItemTest.getCorrectCategoryName" />
+        <item itemvalue="JUnit.RepositoryTest.searchMissingItemReturnsNull" />
       </list>
     </recent_temporary>
   </component>
@@ -274,17 +348,83 @@
       <option name="project" value="LOCAL" />
       <updated>1791946700348</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="week4-Day3 JUnit Basic&#10;Expand JUnit tests: nested, parameterized, assertAll, and lifecycle demos">
+      <created>1792403255882</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1792403255882</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
-        <entry key="MAIN">
+        <entry key="305ec813-d376-4b7d-90cc-682c47b28202">
           <value>
             <State />
           </value>
         </entry>
+        <entry key="4a6360b6-3123-448f-ae21-6077460b8b07">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="120" />
+                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="38" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="305ec813-d376-4b7d-90cc-682c47b28202" value="TOOL_WINDOW" />
+        <entry key="4a6360b6-3123-448f-ae21-6077460b8b07" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>
@@ -307,6 +447,25 @@
     <MESSAGE value="week3-Day3 streams II&#10;Add advanced Stream API: groupingBy, collectors, and sorting for items and POs" />
     <MESSAGE value="week3-Day4 Optional Class and Method reference&#10;Add Optional and method references" />
     <MESSAGE value="week4-Day1 Maven fundamentals&#10;Convert project to Maven with packages and JUnit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="week4-Day1 Maven fundamentals&#10;Convert project to Maven with packages and JUnit tests" />
+    <MESSAGE value="week4-Day3 JUnit Basic&#10;Expand JUnit tests: nested, parameterized, assertAll, and lifecycle demos" />
+    <option name="LAST_COMMIT_MESSAGE" value="week4-Day3 JUnit Basic&#10;Expand JUnit tests: nested, parameterized, assertAll, and lifecycle demos" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Mini_ERP$ItemTest_Selling_sellingMoreThanStockThrowsException.ic" NAME="ItemTest$Selling.sellingMoreThanStockThrowsException Coverage Results" MODIFIED="1792480165244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.minierp.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Mini_ERP$ItemTest_getCorrectCategoryName.ic" NAME="ItemTest.getCorrectCategoryName Coverage Results" MODIFIED="1792554045237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.minierp.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Mini_ERP$ItemTest.ic" NAME="ItemTest Coverage Results" MODIFIED="1792484797176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.minierp.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Mini_ERP$ItemTest_newItemHasCorrectDetails.ic" NAME="ItemTest.newItemHasCorrectDetails Coverage Results" MODIFIED="1792554665823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.minierp.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Mini_ERP$ItemTest_Selling.ic" NAME="ItemTest$Selling Coverage Results" MODIFIED="1792481314494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.minierp.model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Mini_ERP$All_in_Mini_ERP.ic" NAME="All in Mini ERP Coverage Results" MODIFIED="1792562685311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

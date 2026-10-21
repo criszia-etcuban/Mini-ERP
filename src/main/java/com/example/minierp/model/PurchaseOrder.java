@@ -49,4 +49,8 @@ public class PurchaseOrder extends Order implements IApprovable {
 
     public Item getItem() { return item; }
     public int getQty() { return qty; }
+
+    public double calculateTotalWithDiscount() {
+        return item.calculateTotalWithDiscount(qty);
+    }
 }
